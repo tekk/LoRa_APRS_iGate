@@ -43,8 +43,8 @@ bool ModemTask::loop(System &system) {
     int lastIndex = newData.lastIndexOf("!");
     int index = newData.substring(0, lastIndex).lastIndexOf("!");
     newData.replace("\n", "");
-    String rssi = String(" R:" + String(_lora_aprs.packetRssi()) + " S:" + String(_lora_aprs.packetSnr()));
-    newData = String(newData.substring(0, index) + rssi + newData.substring(index) + "\n"); 
+    String rssi = String(" R:" + String(_lora_aprs.packetRssi()) + " S:" + String(_lora_aprs.packetSnr()) + " ");
+    newData = String(newData.substring(0, index) + rssi + newData.substring(index) + "\n");
     msg->getBody()->setData(newData);
 
     logPrintD("[" + timeString() + "] ");
